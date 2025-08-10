@@ -29,6 +29,9 @@ db = SQLDatabase.from_uri("sqlite:///titanic.db")
 # Create SQL agent
 agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True)
 
-# Run query
-# agent_executor.invoke({"input": "what's the average age of survivors"})
-agent_executor.invoke({"input": "what's the total of surviour with male and female?"})
+# Get dynamic question from user
+question = input("Ask a question about the Titanic data: ")
+
+# Run query dynamically
+response = agent_executor.invoke({"input": question})
+print("\nAnswer:", response["output"])

@@ -24,3 +24,10 @@ This project demonstrates how to use **LangChain** with **Google Generative AI**
 ```bash
 python titanic.py
 ```
+
+## Top 5 Questions
+
+1. What's the **average age** of survivors?  
+2. What's the **total number of survivors grouped by gender** (male and female)?  
+3. What's the **survival rate** for each passenger class (1st, 2nd, 3rd)?  
+4. How many **children (age < 18)** survived, grouped by gender?  
