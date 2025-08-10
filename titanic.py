@@ -29,9 +29,15 @@ db = SQLDatabase.from_uri("sqlite:///titanic.db")
 # Create SQL agent
 agent_executor = create_sql_agent(llm, db=db, agent_type="openai-tools", verbose=True)
 
-# Get dynamic question from user
-question = input("Ask a question about the Titanic data: ")
+# Continuous loop for dynamic questions
+while True:
+    question = input("\nAsk a question about the Titanic data (or type 'exit' to quit): ").strip()
+    if question.lower() in ("exit", "quit", "q"):
+        print("Goodbye!")
+        break
 
-# Run query dynamically
-response = agent_executor.invoke({"input": question})
-print("\nAnswer:", response["output"])
+    try:
+        response = agent_executor.invoke({"input": question})
+        print("\nAnswer:", response["output"])
+    except Exception as e:
+        print("Error:", e)
